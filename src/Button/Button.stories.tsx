@@ -1,14 +1,27 @@
 /** @jsx jsx */
 import Button from './Button';
 import { jsx, css } from '@emotion/core';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'components|Button',
   component: Button,
+  decorators: [withKnobs],
 };
 
 export const button = () => {
-  return <Button>BUTTON</Button>;
+  const label = text('children', 'BUTTON');
+  const size = select('size', ['small', 'medium', 'big'], 'medium');
+  const theme = select('theme', ['primary', 'secondary', 'tertiary'], 'primary');
+  const disabled = boolean('disabled', false);
+  const width = text('width', '');
+
+  return (
+    <Button size={size} theme={theme} disabled={disabled} width={width} onClick={action('onClick')}>
+      {label}
+    </Button>
+  );
 };
 
 button.story = {
@@ -70,6 +83,22 @@ export const disabled = () => {
         <Button disabled theme='tertiary'>
           DISABLED
         </Button>
+      </div>
+    </div>
+  );
+};
+
+export const customWidth = () => {
+  return (
+    <div css={buttonWrapper}>
+      <div>
+        <Button width='10rem'>10REM</Button>
+      </div>
+      <div>
+        <Button width='50%'>50%</Button>
+      </div>
+      <div>
+        <Button width='100%'>100%</Button>
       </div>
     </div>
   );

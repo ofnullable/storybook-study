@@ -10,13 +10,19 @@ export type ButtonProps = {
   size: 'small' | 'medium' | 'big';
   /** 비활성화 여부를 결정합니다. */
   disabled?: boolean;
+  /** 버튼의 너비를 지정합니다. */
+  width?: string | number;
   /** 클릭 핸들러 */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Button = ({ children, theme, size, disabled, onClick }: ButtonProps) => {
+const Button = ({ children, theme, size, disabled, width, onClick }: ButtonProps) => {
   return (
-    <button css={[style, themes[theme], sizes[size]]} disabled={disabled} onClick={onClick}>
+    <button
+      css={[style, themes[theme], sizes[size], { width }]}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
@@ -76,6 +82,7 @@ const themes = {
     }
   `,
 };
+
 const sizes = {
   small: css`
     font-size: 0.8rem;
