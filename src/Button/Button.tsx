@@ -12,14 +12,22 @@ export type ButtonProps = {
   disabled?: boolean;
   /** 버튼의 너비를 지정합니다. */
   width?: string | number;
+  /** 아이콘만 보여주려면 이 값을 `true`로 설정하세요. */
+  iconOnly?: boolean;
   /** 클릭 핸들러 */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Button = ({ children, theme, size, disabled, width, onClick }: ButtonProps) => {
+const Button = ({ children, theme, size, disabled, width, iconOnly, onClick }: ButtonProps) => {
   return (
     <button
-      css={[style, themes[theme], sizes[size], { width }]}
+      css={[
+        style,
+        themes[theme],
+        sizes[size],
+        { width },
+        iconOnly && [iconOnlyStyle, iconOnlySizes[size]],
+      ]}
       disabled={disabled}
       onClick={onClick}
     >
@@ -34,6 +42,9 @@ Button.defaultProps = {
 };
 
 const style = css`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   outline: none;
   border: none;
   box-sizing: border-box;
@@ -45,12 +56,19 @@ const style = css`
   &:disabled {
     cursor: not-allowed;
   }
+  svg {
+    width: 1em;
+    margin-right: 1em;
+  }
 `;
 
 const themes = {
   primary: css`
     background: #4263eb;
     color: #f8f9fa;
+    svg {
+      fill: #f8f9fa;
+    }
     &:hover:enabled,
     &:active:enabled {
       background: #364fc7;
@@ -62,39 +80,74 @@ const themes = {
   secondary: css`
     background: #adb5bd;
     color: #f8f9fa;
+    svg {
+      fill: #f8f9fa;
+    }
     &:hover:enabled,
     &:active:enabled {
       background: #868e96;
     }
     &:disabled {
       background: #e9ecef;
+      svg {
+        fill: #f8f9fa;
+      }
     }
   `,
   tertiary: css`
     background: #f8f9fa;
     color: #4263eb;
+    svg {
+      fill: #4263eb;
+    }
     &:hover:enabled,
     &:active:enabled {
       background: #dee2e6;
     }
     &:disabled {
       color: #748ffc;
+      svg {
+        fill: #748ffc;
+      }
     }
   `,
 };
 
 const sizes = {
   small: css`
-    font-size: 0.8rem;
-    padding: 8px 12px;
+    height: 1.75rem;
+    font-size: 0.75rem;
+    padding: 0 0.875rem;
   `,
   medium: css`
+    height: 2.5rem;
     font-size: 1rem;
-    padding: 10px 15px;
+    padding: 0 1rem;
   `,
   big: css`
-    font-size: 1.2rem;
-    padding: 15px 20px;
+    height: 3rem;
+    font-size: 1.125rem;
+    padding: 0 1.5rem;
+  `,
+};
+
+const iconOnlyStyle = css`
+  padding: 0;
+  border-radius: 50%;
+  svg {
+    margin: 0;
+  }
+`;
+
+const iconOnlySizes = {
+  small: css`
+    width: 1.75rem;
+  `,
+  medium: css`
+    width: 2.5rem;
+  `,
+  big: css`
+    width: 3rem;
   `,
 };
 

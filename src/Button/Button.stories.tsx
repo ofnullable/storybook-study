@@ -2,6 +2,8 @@
 import Button from './Button';
 import { jsx, css } from '@emotion/core';
 import { action } from '@storybook/addon-actions';
+import ButtonGroup from '../ButtonGroup/ButtonGroup';
+import Icon from '../Icon/Icon';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 
 export default {
@@ -100,6 +102,45 @@ export const customWidth = () => {
       <div>
         <Button width='100%'>100%</Button>
       </div>
+    </div>
+  );
+};
+
+export const withIcon = () => {
+  return (
+    <div>
+      <ButtonGroup>
+        <Button size='small'>
+          <Icon icon='heart' />
+          LIKE
+        </Button>
+        <Button theme='secondary'>
+          <Icon icon='heart' />
+          LIKE
+        </Button>
+        <Button size='big' theme='tertiary'>
+          <Icon icon='heart' />
+          LIKE
+        </Button>
+      </ButtonGroup>
+    </div>
+  );
+};
+
+export const iconOnly = () => {
+  return (
+    <div>
+      <ButtonGroup>
+        <Button iconOnly size='small'>
+          <Icon icon='heart' />
+        </Button>
+        <Button iconOnly>
+          <Icon icon='heart' />
+        </Button>
+        <Button iconOnly size='big'>
+          <Icon icon='heart' />
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };
