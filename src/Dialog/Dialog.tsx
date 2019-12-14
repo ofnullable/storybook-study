@@ -55,7 +55,12 @@ const Dialog = ({
 
       {slideUpTransition.map(({ item, key, props }) =>
         item ? (
-          <animated.div css={[fullscreen, whiteBoxWrapper]} key={key} style={props}>
+          <animated.div
+            css={[fullscreen, whiteBoxWrapper]}
+            key={key}
+            style={props}
+            onClick={onCancel ? onCancel : () => {}}
+          >
             <div css={whiteBox}>
               {title && <h3>{title}</h3>}
               {description && <p>{description}</p>}

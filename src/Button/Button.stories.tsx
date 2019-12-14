@@ -47,7 +47,7 @@ const buttonWrapper = css`
     margin-bottom: 0.5rem;
   }
   & > div + div {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
 

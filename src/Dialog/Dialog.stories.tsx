@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import Dialog from './Dialog';
 
@@ -20,6 +20,7 @@ export const dialog = () => {
   const confirmText = text('confirmText', '확인');
   const cancellable = boolean('cancellable', true);
   const cancelText = text('cancelText', '취소');
+
   return (
     <Dialog
       title={title}
@@ -37,13 +38,18 @@ dialog.story = {
 };
 
 export const cancellable = () => {
+  const [visible, setVisible] = useState(true);
+  const onCancel = () => {
+    setVisible(false);
+  };
   return (
     <Dialog
       title='포스트 삭제'
       description='포스트를 정말로 삭제하시겠습니까?'
-      visible={true}
+      visible={visible}
       confirmText='삭제'
       cancellable
+      onCancel={onCancel}
     />
   );
 };
