@@ -4,17 +4,17 @@ import { jsx, css } from '@emotion/core';
 export type ButtonProps = {
   /** 버튼 내용 */
   children: React.ReactNode;
-  /** 버튼의 색상을 결정합니다. */
+  /** 버튼의 색상 */
   theme: 'primary' | 'secondary' | 'tertiary';
-  /** 버튼의 크기를 결정합니다. */
+  /** 버튼의 크기 */
   size: 'small' | 'medium' | 'big';
-  /** 비활성화 여부를 결정합니다. */
+  /** 비활성화 여부 */
   disabled?: boolean;
-  /** 버튼의 너비를 지정합니다. */
+  /** 너비 */
   width?: string | number;
-  /** 아이콘만 보여주려면 이 값을 `true`로 설정하세요. */
+  /** 아이콘만 보여줄지 여부 */
   iconOnly?: boolean;
-  /** 클릭 핸들러 */
+  /** 클릭 시 이벤트 핸들러 */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -44,12 +44,12 @@ Button.defaultProps = {
 const style = css`
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   outline: none;
   border: none;
   box-sizing: border-box;
-  border-radius: 7px;
+  border-radius: 5px;
   line-height: 1;
   &:focus {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
@@ -59,7 +59,9 @@ const style = css`
   }
   svg {
     width: 1em;
-    margin-right: 1em;
+    height: 1em;
+    font-size: inherit;
+    margin-right: 0.5em;
   }
 `;
 
@@ -116,25 +118,25 @@ const themes = {
 
 const sizes = {
   small: css`
-    height: 1.75rem;
-    font-size: 0.75rem;
-    padding: 0 0.875rem;
+    font-size: 12px;
+    padding: 6px 12px;
   `,
   medium: css`
-    height: 2.5rem;
-    font-size: 1rem;
-    padding: 0 1rem;
+    font-size: 14px;
+    padding: 8px 16px;
   `,
   big: css`
-    height: 3rem;
-    font-size: 1.125rem;
-    padding: 0 1.5rem;
+    font-size: 16px;
+    padding: 12px 20px;
   `,
 };
 
 const iconOnlyStyle = css`
   padding: 0;
   border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   svg {
     margin: 0;
   }
@@ -143,12 +145,15 @@ const iconOnlyStyle = css`
 const iconOnlySizes = {
   small: css`
     width: 1.75rem;
+    height: 1.75rem;
   `,
   medium: css`
     width: 2.5rem;
+    height: 2.5rem;
   `,
   big: css`
     width: 3rem;
+    height: 3rem;
   `,
 };
 

@@ -7,15 +7,25 @@ import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Button from '../Button/Button';
 
 export type DialogProps = {
+  /** 다이얼로그가 표시될 지 여부 */
   visible: boolean;
+  /** 다이얼로그의 타이틀 */
   title?: string;
+  /** 다이얼로그의 내용 */
   description?: string;
+  /** 버튼을 표시할 지 여부 */
   hideButtons?: boolean;
+  /** 취소할 수 있는 다이얼로그인지 여부 */
   cancellable?: boolean;
+  /** 취소 버튼의 텍스트 */
   cancelText: string;
+  /** 확인 버튼의 텍스트 */
   confirmText: string;
+  /** 취소버튼 클릭 시 이벤트 핸들러 */
   onCancel?: () => void;
+  /** 확인버튼 클릭 시 이벤트 핸들러 */
   onConfirm?: () => void;
+  /** 다이얼로그 내용 */
   children?: React.ReactNode;
 };
 
@@ -66,7 +76,7 @@ const Dialog = ({
               {description && <p>{description}</p>}
               {children}
               {!hideButtons && (
-                <ButtonGroup css={{ marginTop: '3rem' }} rightAlign>
+                <ButtonGroup css={[{ marginTop: '3rem' }]} rightAlign>
                   {cancellable && (
                     <Button theme='secondary' onClick={onCancel}>
                       {cancelText}

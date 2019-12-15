@@ -2,15 +2,15 @@
 import { css, jsx } from '@emotion/core';
 
 export type ButtonGroupProps = {
-  /** 버튼을 보여줄 방향 */
+  /** 버튼의 방향 */
   direction: 'row' | 'column';
-  /** 우측정렬 */
+  /** 우측정렬 여부 */
   rightAlign?: boolean;
-  /** 버튼사이의 간격을 설정합니다. */
+  /** 버튼사이의 간격 */
   gutter: number | string;
-  /** 보여줄 버튼들 */
+  /** 보여줄 버튼 */
   children: React.ReactNode;
-  /** 스타일 커스터마이징을 위한 class */
+  /** HTML class */
   className?: string;
 };
 
@@ -31,7 +31,7 @@ const ButtonGroup = ({ direction, rightAlign, gutter, children, className }: But
 
 ButtonGroup.defaultProps = {
   direction: 'row',
-  gutter: '15px',
+  gutter: '16px',
 };
 
 const gutterStyle = (direction: 'row' | 'column', gutter: number | string) => {
