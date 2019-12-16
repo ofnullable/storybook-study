@@ -8,16 +8,25 @@ export type CheckboxProps = {
   id: string;
   /** 체크 여부 */
   checked: boolean;
+  /** 비활성화 여부 */
+  disabled: boolean;
   /** 체크박스 색상 */
   theme: 'primary' | 'secondary' | 'tertiary';
   /** 클릭 시 이벤트 핸들러 */
   onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Checkbox = ({ id, checked, theme, onChange, children }: CheckboxProps) => {
+const Checkbox = ({ id, checked, disabled, theme, onChange, children }: CheckboxProps) => {
   return (
     <div css={[style, themes[theme]]}>
-      <input type='checkbox' id={id} checked={checked} onChange={onChange} />
+      <input
+        type="checkbox"
+        id={id}
+        checked={checked}
+        onChange={onChange}
+        disabled={disabled}
+        readOnly={disabled}
+      />
       <label htmlFor={id}>{children}</label>
     </div>
   );
@@ -25,14 +34,22 @@ const Checkbox = ({ id, checked, theme, onChange, children }: CheckboxProps) => 
 
 Checkbox.defaultProps = {
   theme: 'primary',
+  disabled: false,
 };
 
 const style = css`
   display: inline-block;
   vertical-align: middle;
+
   input[type='checkbox'] {
     display: none;
   }
+
+  input[type='checkbox']:disabled + label {
+    cursor: not-allowed;
+    color: darkgray;
+  }
+
   input[type='checkbox'] + label {
     cursor: pointer;
     display: flex;
@@ -50,6 +67,7 @@ const style = css`
       margin-right: 5px;
     }
   }
+
   input[type='checkbox']:checked + label {
     &::before {
       content: '✔';
@@ -79,6 +97,11 @@ const themes = {
         background: #4263eb;
       }
     }
+    input[type='checkbox']:disabled:checked + label {
+      &::before {
+        background: #879cf2;
+      }
+    }
   `,
   secondary: css`
     input[type='checkbox'] + label {
@@ -97,6 +120,11 @@ const themes = {
         background: #868e96;
       }
     }
+    input[type='checkbox']:disabled:checked + label {
+      &::before {
+        background: #dadcdf;
+      }
+    }
   `,
   tertiary: css`
     input[type='checkbox'] + label {
@@ -113,6 +141,11 @@ const themes = {
       &::before {
         color: #4263eb;
         background: #f8f9fa;
+      }
+    }
+    input[type='checkbox']:disabled:checked + label {
+      &::before {
+        color: #879cf2;
       }
     }
   `,

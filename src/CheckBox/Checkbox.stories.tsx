@@ -37,7 +37,7 @@ export const primary = () => {
     setPrimaryChecked(prev => !prev);
   };
   return (
-    <Checkbox id='primary' checked={primaryChecked} onChange={changeHandler}>
+    <Checkbox id="primary" checked={primaryChecked} onChange={changeHandler}>
       PRIMARY
     </Checkbox>
   );
@@ -49,7 +49,7 @@ export const secondary = () => {
     setSecondaryChecked(prev => !prev);
   };
   return (
-    <Checkbox id='secondary' theme='secondary' checked={secondaryChecked} onChange={changeHandler}>
+    <Checkbox id="secondary" theme="secondary" checked={secondaryChecked} onChange={changeHandler}>
       SECONDARY
     </Checkbox>
   );
@@ -61,8 +61,24 @@ export const tertiary = () => {
     setChecked(prev => !prev);
   };
   return (
-    <Checkbox id='tertiary' theme='tertiary' checked={checked} onChange={changeHandler}>
+    <Checkbox id="tertiary" theme="tertiary" checked={checked} onChange={changeHandler}>
       TERTIARY
     </Checkbox>
+  );
+};
+
+export const disabled = () => {
+  return (
+    <div>
+      <Checkbox id="primary-disabled" theme="primary" checked={true} disabled>
+        PRIMARY DISABLED
+      </Checkbox>
+      <Checkbox id="secondary-disabled" theme="secondary" checked={true} disabled>
+        SECONDARY DISABLED
+      </Checkbox>
+      <Checkbox id="tertiary-disabled" theme="tertiary" checked={true} disabled>
+        TERTIARY DISABLED
+      </Checkbox>
+    </div>
   );
 };
