@@ -53,7 +53,7 @@ const buttonWrapper = css`
 
 export const sizes = () => {
   return (
-    <div css={buttonWrapper}>
+    <div css={[buttonWrapper]}>
       <div>
         <div>Small</div>
         <Button size='small'>SMALL BUTTON</Button>
@@ -72,7 +72,7 @@ export const sizes = () => {
 
 export const disabled = () => {
   return (
-    <div css={buttonWrapper}>
+    <div css={[buttonWrapper]}>
       <div>
         <Button disabled>DISABLED</Button>
       </div>
@@ -92,7 +92,7 @@ export const disabled = () => {
 
 export const customWidth = () => {
   return (
-    <div css={buttonWrapper}>
+    <div css={[buttonWrapper]}>
       <div>
         <Button width='10rem'>10REM</Button>
       </div>

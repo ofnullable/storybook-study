@@ -71,7 +71,7 @@ const Dialog = ({
             style={props}
             onClick={onCancel ? onCancel : () => {}}
           >
-            <div css={whiteBox}>
+            <div css={[whiteBox]}>
               {title && <h3>{title}</h3>}
               {description && <p>{description}</p>}
               {children}
