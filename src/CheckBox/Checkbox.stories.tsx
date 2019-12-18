@@ -71,13 +71,13 @@ export const disabled = () => {
   return (
     <div>
       <Checkbox id="primary-disabled" theme="primary" checked={true} disabled>
-        PRIMARY DISABLED
+        DISABLED
       </Checkbox>
       <Checkbox id="secondary-disabled" theme="secondary" checked={true} disabled>
-        SECONDARY DISABLED
+        DISABLED
       </Checkbox>
       <Checkbox id="tertiary-disabled" theme="tertiary" checked={true} disabled>
-        TERTIARY DISABLED
+        DISABLED
       </Checkbox>
     </div>
   );

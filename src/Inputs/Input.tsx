@@ -11,7 +11,7 @@ export type InputProps = {
   /** input 값 */
   value: string;
   /** theme */
-  theme: 'primary' | 'secondary' | 'tertiary';
+  theme: 'primary' | 'secondary';
   /** 비활성화 여부 */
   disabled?: boolean;
   /** change 이벤트 핸들러 */
@@ -41,6 +41,13 @@ const style = css`
     padding: 8px 10px;
     border-radius: 5px;
     font-size: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.42);
+  }
+  input:focus {
+    outline: none;
+  }
+  input:disabled {
+    cursor: default;
   }
   label {
     font-size: 16px;
@@ -50,7 +57,7 @@ const style = css`
 
 const themes = {
   primary: css`
-    input {
+    input:focus {
       border: 1px solid #4263eb;
     }
     svg {
@@ -61,8 +68,7 @@ const themes = {
     }
   `,
   secondary: css`
-    input {
-      border: 1px solid #adb5bd;
+    input:focus {
     }
     svg {
       fill: #f8f9fa;
@@ -72,21 +78,6 @@ const themes = {
       border: #e9ecef;
       svg {
         fill: #f8f9fa;
-      }
-    }
-  `,
-  tertiary: css`
-    input {
-      border: 1px solid #adb5bd;
-      color: #4263eb;
-    }
-    svg {
-      fill: #4263eb;
-    }
-    input:disabled {
-      color: #748ffc;
-      svg {
-        fill: #748ffc;
       }
     }
   `,
